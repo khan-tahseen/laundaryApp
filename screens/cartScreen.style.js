@@ -11,9 +11,6 @@ export default StyleSheet.create({
     fontSize: 18,
   },
   cartItems: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
     backgroundColor: "white",
     borderColor: "gray",
     borderRadius: 8,
@@ -41,6 +38,38 @@ export default StyleSheet.create({
     fontSize: 18,
     color: "#088F8F",
     marginHorizontal: 8,
+    fontWeight: "bold",
+  },
+  billingText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 32,
+    marginBottom: 16,
+  },
+  detailsText: {
+    fontSize: 16,
+    fontWeight: "400",
+    color: "gray",
+  },
+  deliveryFee: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 8,
+  },
+  free: {
+    fontSize: 16,
+    fontWeight: "400",
+    color: "#088F8F",
+  },
+  singleLine: {
+    borderColor: "gray",
+    height: 1,
+    borderWidth: 0.5,
+    marginTop: 10,
+  },
+  pay: {
+    fontSize: 18,
     fontWeight: "bold",
   },
 });

@@ -92,7 +92,7 @@ const HomeScreen = () => {
             <Text>{displayCurrentAddress}</Text>
           </View>
 
-          <TouchableOpacity style={{ marginLeft: "auto" }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={{ marginLeft: "auto" }}>
             <Image style={styles.profileIcon} source={{ uri: PROFILE }} />
           </TouchableOpacity>
         </View>
