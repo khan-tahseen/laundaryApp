@@ -116,7 +116,10 @@ const HomeScreen = () => {
       </ScrollView>
 
       {totalPrice !== 0 ? (
-        <TouchableOpacity style={styles.proceedButton}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("pickUp")}
+          style={styles.proceedButton}
+        >
           <View>
             <Text style={styles.totalItemAndPrice}>
               {cart.length} items | $ {totalPrice}
@@ -125,10 +128,7 @@ const HomeScreen = () => {
               Extra charges might apply
             </Text>
           </View>
-          <Text
-            onPress={() => navigation.navigate("pickUp")}
-            style={{ fontSize: 16, color: "white", fontWeight: "bold" }}
-          >
+          <Text style={{ fontSize: 16, color: "white", fontWeight: "bold" }}>
             Proceed to pickup
           </Text>
         </TouchableOpacity>

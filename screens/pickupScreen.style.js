@@ -20,6 +20,22 @@ export default StyleSheet.create({
     margin: 8,
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: "gray",
+  },
+  proceedButton: {
+    padding: 8,
+    backgroundColor: "#088F8F",
+    marginHorizontal: 16,
+    borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 'auto',
+    marginBottom: 32
+  },
+  totalItemAndPrice: {
+    fontSize: 17,
+    color: "white",
+    fontWeight: "500",
+    marginBottom: 4,
   },
 });
