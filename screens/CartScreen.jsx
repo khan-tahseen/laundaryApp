@@ -10,17 +10,33 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "./cartScreen.style";
 import { useDispatch, useSelector } from "react-redux";
-import { decrementQuantity, incrementQuantity } from "../CartReducer";
+import { cleanCart, decrementQuantity, incrementQuantity } from "../CartReducer";
 import { decrementQty, incrementQty } from "../ProductReducer";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 
 const CartScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const userUid = auth.currentUser.uid;
   const cart = useSelector((state) => state.cart.cartItems);
   const totalPrice = cart
     .map((item) => item.quantity * item.price)
     .reduce((curr, prev) => curr + prev, 0);
   const dispatch = useDispatch();
+
+  const handleOrder = async () => {
+    console.log("order placed");
+    // navigate to order screen with the items in the cart as props and clear it out of redux store after placing an order
+    navigation.navigate('Order');
+    dispatch(cleanCart());
+    await setDoc(doc, (db, 'users', `${userUid}`), {
+      orders: [...cart],
+      pickUpDetails: route.params
+    }, {
+      merge: true
+    })
+  }
 
   return (
     <SafeAreaView>
@@ -119,6 +135,21 @@ const CartScreen = () => {
           </View>
         </View>
       </ScrollView>
+      {totalPrice !== 0 ? (
+        <TouchableOpacity onPress={handleOrder} style={styles.proceedButton}>
+          <View>
+            <Text style={styles.totalItemAndPrice}>
+              {cart.length} items | $ {totalPrice + 65}
+            </Text>
+            <Text style={{ fontSize: 13, color: "white" }}>
+              Extra charges might apply
+            </Text>
+          </View>
+          <Text style={{ fontSize: 16, color: "white", fontWeight: "bold" }}>
+            Place Order
+          </Text>
+        </TouchableOpacity>
+      ) : null}
     </SafeAreaView>
   );
 };

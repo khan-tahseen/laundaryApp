@@ -72,4 +72,22 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  proceedButton: {
+    padding: 8,
+    backgroundColor: "#088F8F",
+    marginHorizontal: 16,
+    borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    position: 'absolute',
+    bottom: -320,
+    width: '92%'
+  },
+  totalItemAndPrice: {
+    fontSize: 17,
+    color: "white",
+    fontWeight: "500",
+    marginBottom: 4,
+  },
 });
